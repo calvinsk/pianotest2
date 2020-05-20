@@ -1,13 +1,8 @@
 
-/*
-Copyright (C): 2010-2019, Shenzhen Yahboom Tech
-modified from liusen
-load dependency
-"piano": "file:../pxt-piano"  
-*/
 
-//% color="#F1C40F" weight=20 icon="\uf001"
-namespace piano_keypad {
+
+//% color="#2131CB" weight=20 icon="\uf001"
+namespace Ekits_piano {
 
   
     let Strip: neopixel.Strip;
@@ -107,12 +102,12 @@ namespace piano_keypad {
      * @param index
      */
     
-    //% blockId=piano_RGB_Program block="RGB_Program"
+    //% blockId=Ekits_piano_Turn_On_RGB block="Turn On RGB"
     //% weight=99
     //% blockGap=10
-    //% color="#17ecc1"
+    //% color="#2131CB"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Program(): neopixel.Strip {
+    export function Turn_On_RGB(): neopixel.Strip {
          
         if (!Strip) {
             Strip = neopixel.create(DigitalPin.P1, 3, NeoPixelMode.RGB);
@@ -120,23 +115,23 @@ namespace piano_keypad {
         return Strip;  
     }  
        
-    //% blockId=piano_RGB_Program_Close block="RGB_Program_Close"
+    //% blockId=Ekits_piano_Turn_Off_RGB block="Turn Off RGB"
     //% weight=98
     //% blockGap=10
-    //% color="#17ecc1"
+    //% color="#2131CB"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
-    export function RGB_Program_Close(): void {
+    export function Turn_Off_RGB(): void {
         pins.digitalWritePin(DigitalPin.P1, 0);
-        piano_keypad.RGB_Program().clear();
-        piano_keypad.RGB_Program().show();
+        piano_keypad.Turn_On_RGB().clear();
+        piano_keypad.Turn_On_RGB().show();
     }
     
-    //% blockId=piano_Musicbeat block="Musicbeat|%index"
+    //% blockId=Ekits_piano_Music_melody block="Music Melody|%index"
     //% weight=98
     //% blockGap=10
-    //% color="#17ecc1"
+    //% color="#2131CB"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Musicbeat(index: musictone): void {
+    export function Music_melody(index: musictone): void {
         switch (index) {
             case musictone.dadadum: music.beginMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once); break;
             case musictone.birthday: music.beginMelody(music.builtInMelody(Melodies.Birthday), MelodyOptions.Once); break;
@@ -161,10 +156,10 @@ namespace piano_keypad {
         }
     }
     
-    //% blockId=piano_Touch block="Music Touch return"
+    //% blockId=Ekits_piano_Touch block="Music Touch Return"
     //% weight=97
     //% blockGap=10
-    //% color="#17ecc1"
+    //% color="#2131CB"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
     export function Touch(): number {
         let a = 0;
@@ -177,10 +172,10 @@ namespace piano_keypad {
         return c;
     }
     
-    //% blockId=piano_TouchButton block="Music Button|%value"
+    //% blockId=Ekits_piano_TouchButton block="Music Note|%value"
     //% weight=96
     //% blockGap=10
-    //% color="#17ecc1"
+    //% color="#2131CB"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
     export function TouchButton(value: note): number {
        
@@ -188,10 +183,10 @@ namespace piano_keypad {
         return c;
     }
 
-    //% blockId=piano_PlayPiano block="Play Piano|tone %value"
+    //% blockId=Ekits_piano_PlayPiano block="Play Piano|tone %value"
     //% weight=95
     //% blockGap=10
-    //% color="#17ecc1"
+    //% color="#2131CB"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
     export function PlayPiano(value: number): void {
         let a = 0;
